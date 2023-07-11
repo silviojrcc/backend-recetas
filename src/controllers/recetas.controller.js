@@ -38,3 +38,17 @@ export const crearReceta = async (req, res) => {
         });
     }
 }
+
+export const eliminarReceta = async (req, res) => {
+    try {
+        await Receta.findByIdAndDelete(req.params.id);
+        res.status(200).json({
+            message: 'Receta eliminada correctamente'
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(400).json({
+            message: 'No se pudo eliminar la receta'
+        });
+    }
+}
