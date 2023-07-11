@@ -4,6 +4,7 @@ import morgan from "morgan";
 import path from 'path';
 import 'dotenv/config';
 import './src/database/dbConnection.js';
+import recetasRouter from './src/routes/recetas.routes.js';
 
 const app = express();
 
@@ -17,3 +18,4 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '/public')));
 
+app.use('/apirecetas', recetasRouter);
